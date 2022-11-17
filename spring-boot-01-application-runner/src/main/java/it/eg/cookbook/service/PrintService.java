@@ -21,6 +21,6 @@ public class PrintService {
 
         // Parametri opzionali
         log.info("    Optional");
-        args.getOptionNames().forEach(option -> log.info("      - {}: {}", option, args.getOptionValues(option).get(0)));
+        args.getOptionNames().forEach(option -> log.info("      - {}: {}", option, args.getOptionValues(option)));
     }
 }

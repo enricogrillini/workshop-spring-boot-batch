@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-@SpringBootTest(args = {"--print"})
+@SpringBootTest(classes = BatchApplication.class, args = {"--print", "--opt=opt-1", "required-1"})
 class PrintTest {
 
     @Autowired
