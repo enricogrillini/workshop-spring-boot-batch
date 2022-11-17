@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CustomConfig {
+public class ExitCodeConfig {
     @Bean
     public ExitCodeExceptionMapper exceptionBasedExitCode() {
         return exception -> 99;
