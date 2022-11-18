@@ -1,0 +1,7 @@
+
+
+Usage:  java -jar ./application-runner-advanced.jar [OPTIONS]
+
+Options:
+      --help               Batch help
+      --print              Stampa i parametri passati

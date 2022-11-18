@@ -13,18 +13,18 @@ public class RunService {
     ApplicationArguments applicationArguments;
 
     @Autowired
-    PrintService batchService;
+    HelpService helpService;
 
     @Autowired
-    ExceptionService exceptionService;
+    PrintService batchService;
 
     public void run() {
-        if (applicationArguments.containsOption("print")) {
-            batchService.printParameters();
+        if (applicationArguments.containsOption("help")) {
+            helpService.printHelp();
         }
 
-        if (applicationArguments.containsOption("exception")) {
-            exceptionService.throwException();
+        if (applicationArguments.containsOption("print")) {
+            batchService.printParameters();
         }
     }
 }
