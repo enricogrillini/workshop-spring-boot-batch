@@ -13,7 +13,7 @@ java -jar ./target/application-runner-advanced.jar --help
 java -jar ./target/application-runner-advanced.jar --version
 
 # Esecuzione: stampa variabili passate
-java -jar ./target/application-runner-advanced.jar --print
+java -jar ./target/application-runner-advanced.jar --endpoint=http://localhost:8082
 ```
 
 Utilizzo con spring-boot:run:
@@ -26,7 +26,7 @@ mvn clean spring-boot:run "-Dspring-boot.run.arguments=--help"
 mvn clean spring-boot:run "-Dspring-boot.run.arguments=--version"
 
 # Esecuzione: stampa variabili passate
-mvn clean spring-boot:run "-Dspring-boot.run.arguments=--print"
+mvn clean spring-boot:run "-Dspring-boot.run.arguments=--endpoint=http://localhost:8082"
 ```
 
 Docker Windows

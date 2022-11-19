@@ -1,8 +1,8 @@
 package it.eg.cookbook.base;
 
 import it.eg.cookbook.BatchApplication;
+import it.eg.cookbook.service.BatchService;
 import it.eg.cookbook.service.InfoService;
-import it.eg.cookbook.service.RunService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +13,14 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 class InfoVersionTest {
 
     @Autowired
-    RunService runService;
+    BatchService batchService;
 
     @SpyBean
     InfoService infoService;
 
     @Test
     void printServiceTest() {
-        runService.run();
+        batchService.run();
 
         Mockito.verify(infoService, Mockito.times(1)).printVersion();
     }

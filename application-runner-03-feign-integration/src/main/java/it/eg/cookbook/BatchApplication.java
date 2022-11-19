@@ -1,21 +1,23 @@
 package it.eg.cookbook;
 
+import it.eg.cookbook.service.BatchService;
 import it.eg.cookbook.service.InfoService;
-import it.eg.cookbook.service.RunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class BatchApplication implements ApplicationRunner {
 
     @Autowired
-    RunService runService;
+    BatchService batchService;
 
     @Autowired
-    InfoService helpService;
+    InfoService infoService;
 
     public static void main(String[] args) {
         SpringApplication.run(BatchApplication.class, args);
@@ -23,9 +25,17 @@ public class BatchApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        helpService.checkParameters();
+        if (args.containsOption("help")) {
+            infoService.printHelp();
+            return;
+        }
 
-        runService.run();
+        if (args.containsOption("version")) {
+            infoService.printVersion();
+            return;
+        }
+
+        batchService.run();
     }
 
 }
