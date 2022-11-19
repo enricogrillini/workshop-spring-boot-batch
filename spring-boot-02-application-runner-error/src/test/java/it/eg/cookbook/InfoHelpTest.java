@@ -1,7 +1,6 @@
 package it.eg.cookbook;
 
-import it.eg.cookbook.service.HelpService;
-import it.eg.cookbook.service.PrintService;
+import it.eg.cookbook.service.InfoService;
 import it.eg.cookbook.service.RunService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -10,19 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 @SpringBootTest(classes = BatchApplication.class, args = {"--help"})
-class HelpTest {
+class InfoHelpTest {
 
     @Autowired
     RunService runService;
 
     @SpyBean
-    HelpService printService;
+    InfoService infoService;
 
     @Test
     void printServiceTest() {
         runService.run();
 
-        Mockito.verify(printService, Mockito.times(1)).printHelp();
+        Mockito.verify(infoService, Mockito.times(1)).printHelp();
     }
 
 }

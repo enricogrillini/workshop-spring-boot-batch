@@ -13,7 +13,7 @@ public class RunService {
     ApplicationArguments applicationArguments;
 
     @Autowired
-    HelpService helpService;
+    InfoService helpService;
 
     @Autowired
     PrintService batchService;

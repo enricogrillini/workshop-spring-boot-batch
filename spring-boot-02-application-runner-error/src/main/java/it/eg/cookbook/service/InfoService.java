@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 @Slf4j
-public class HelpService {
+public class InfoService {
 
     @Value("${info.app.name}")
     String appName;

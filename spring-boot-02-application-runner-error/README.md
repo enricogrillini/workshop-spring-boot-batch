@@ -2,15 +2,18 @@
 
 Batch base basato su ApplicationRunner:
 
+Utilizzo con java -jar:
 ```shell
 mvn clean package
 
-java -jar ./target/application-runner-advanced.jar --print
+java -jar ./target/application-runner-advanced.jar --help
 
-mvn clean spring-boot:run "-Dspring-boot.run.arguments=--print"
+java -jar ./target/application-runner-advanced.jar --version
+
+java -jar ./target/application-runner-advanced.jar --print
 ```
 
-Utilizzo batch:
+Utilizzo con spring-boot:run:
 
 ```shell
 # Stampa help

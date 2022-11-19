@@ -1,6 +1,6 @@
 package it.eg.cookbook;
 
-import it.eg.cookbook.service.HelpService;
+import it.eg.cookbook.service.InfoService;
 import it.eg.cookbook.service.RunService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -15,7 +15,7 @@ public class BatchApplication implements ApplicationRunner {
     RunService runService;
 
     @Autowired
-    HelpService helpService;
+    InfoService helpService;
 
     public static void main(String[] args) {
         SpringApplication.run(BatchApplication.class, args);
