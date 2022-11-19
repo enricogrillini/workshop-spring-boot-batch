@@ -13,19 +13,21 @@ public class RunService {
     ApplicationArguments applicationArguments;
 
     @Autowired
-    InfoService helpService;
+    InfoService infoService;
 
     @Autowired
     PrintService batchService;
 
     public void run() {
+        infoService.checkParameters();
+
         if (applicationArguments.containsOption("help")) {
-            helpService.printHelp();
+            infoService.printHelp();
             return;
         }
 
         if (applicationArguments.containsOption("version")) {
-            helpService.printVersion();
+            infoService.printVersion();
             return;
         }
 

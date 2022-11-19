@@ -44,13 +44,8 @@ public class InfoService {
 
     // Verifica i parametroi passati al batch
     public void checkParameters() {
-        try {
-            if (args.getOptionNames().isEmpty()) {
-                throw new BatchException("Specificare almeno un parametro", ResponseCode.PARAMETER_ERROR);
-            }
-        } catch (BatchException ex) {
-            printHelp();
-            throw ex;
+        if (args.getOptionNames().isEmpty()) {
+            throw new BatchException("Specificare almeno un parametro", ResponseCode.PARAMETER_ERROR);
         }
     }
 
@@ -61,7 +56,7 @@ public class InfoService {
 
     // Stampa la versione del batch
     public void printVersion() {
-        log.info(String.format("\n\n%s - %s\n%s\n", appName, appVersion, appDescription));
+        log.info(String.format("%n%n%s - %s%n%s%n", appName, appVersion, appDescription));
     }
 
 }

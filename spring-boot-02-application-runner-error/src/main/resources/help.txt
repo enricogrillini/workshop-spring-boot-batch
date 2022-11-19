@@ -3,7 +3,7 @@
 Usage:  java -jar ./application-runner-advanced.jar [OPTIONS]
 
 Description:
-      Se specificato il parametro --version stampa le variabili passate al batch
+      Se specificato il parametro --print stampa le variabili passate al batch
 
 Options:
       --help               Batch help
