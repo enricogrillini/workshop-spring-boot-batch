@@ -1,6 +1,11 @@
-# application-runner-advanced
+# application-runner-feign-integration
 
-Batch avanzato basato su ApplicationRunner:
+**Nota**: richiede il progetto `spring-boot-06-contract-first` up & runing
+
+Il batch effettua:
+ - La login rest ottenendo un JwtToken
+ - Ottiene una lista di documenti
+ - Ne ggiorna la descrizione
 
 Utilizzo con java -jar:
 ```shell
