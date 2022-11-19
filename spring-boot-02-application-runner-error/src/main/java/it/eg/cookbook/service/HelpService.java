@@ -19,6 +19,15 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class HelpService {
 
+    @Value("${info.app.name}")
+    String appName;
+
+    @Value("${info.app.version}")
+    String appVersion;
+
+    @Value("${info.app.description}")
+    String appDescription;
+
     @Autowired
     ApplicationArguments args;
 
@@ -48,6 +57,11 @@ public class HelpService {
     // Stampa l'help
     public void printHelp() {
         log.info(help());
+    }
+
+    // Stampa la versione del batch
+    public void printVersion() {
+        log.info(String.format("\n\n%s - %s\n%s\n", appName, appVersion, appDescription));
     }
 
 }

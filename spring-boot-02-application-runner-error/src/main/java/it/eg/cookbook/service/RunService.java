@@ -21,6 +21,12 @@ public class RunService {
     public void run() {
         if (applicationArguments.containsOption("help")) {
             helpService.printHelp();
+            return;
+        }
+
+        if (applicationArguments.containsOption("version")) {
+            helpService.printVersion();
+            return;
         }
 
         if (applicationArguments.containsOption("print")) {

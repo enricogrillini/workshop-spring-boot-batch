@@ -7,6 +7,7 @@
     <groupId>it.eg.cookbook.spring-boot-application-runner-advanced</groupId>
     <artifactId>application-runner-advanced</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <description>Batch avanzato implementato con application runner</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
