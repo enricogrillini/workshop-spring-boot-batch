@@ -15,16 +15,13 @@ public class RunService {
     @Autowired
     PrintService batchService;
 
-    @Autowired
-    ExceptionService exceptionService;
-
     public void run() {
         if (applicationArguments.containsOption("print")) {
             batchService.printParameters();
         }
 
         if (applicationArguments.containsOption("exception")) {
-            exceptionService.throwException();
+            throw new RuntimeException("Test Exception");
         }
     }
 }
