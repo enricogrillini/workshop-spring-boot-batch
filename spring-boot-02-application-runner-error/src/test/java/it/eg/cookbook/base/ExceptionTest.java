@@ -1,5 +1,6 @@
-package it.eg.cookbook;
+package it.eg.cookbook.base;
 
+import it.eg.cookbook.BatchApplication;
 import it.eg.cookbook.error.BatchException;
 import it.eg.cookbook.error.ResponseCode;
 import it.eg.cookbook.service.RunService;
