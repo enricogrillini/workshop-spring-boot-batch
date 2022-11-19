@@ -6,7 +6,8 @@ import it.eg.cookbook.gen.controller.DocumentApi;
 
 @FeignClient(
         value = "backend-document",
-        url = "${endpoint:http://localhost}")
+        url = "${endpoint:http://localhost}"
+)
 @Service
 public interface DocumentClient extends DocumentApi {
 }

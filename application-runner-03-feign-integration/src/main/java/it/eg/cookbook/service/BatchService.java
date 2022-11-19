@@ -2,14 +2,17 @@ package it.eg.cookbook.service;
 
 import it.eg.cookbook.client.DocumentClient;
 import it.eg.cookbook.client.SecurityClient;
+import it.eg.cookbook.config.CustomInterceptor;
 import it.eg.cookbook.error.BatchException;
 import it.eg.cookbook.error.ResponseCode;
+import it.eg.cookbook.gen.model.Document;
+import it.eg.cookbook.gen.model.Token;
+import it.eg.cookbook.gen.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import it.eg.cookbook.gen.model.Document;
 
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class BatchService {
     DocumentClient documentClient;
 
     @Autowired
+    CustomInterceptor customInterceptor;
+
+    @Autowired
     ApplicationArguments args;
 
     // Verifica i parametroi passati al batch
@@ -36,18 +42,25 @@ public class BatchService {
     public void run() {
         checkParameters();
 
-//        User user = new User()
-//                .issuer("www.idm.com")
-//                .subject("writer.1")
-//                .audience("progetto-cookbook")
-//                .ttlMillis(3600000L);
-//
-//        ResponseEntity<Token> tokenEntity = securityClient.postGenerateToken(user);
+        // Login
+        User user = new User()
+                .issuer("www.idm.com")
+                .subject("writer-batch")
+                .audience("progetto-cookbook")
+                .ttlMillis(3600000L);
 
+        ResponseEntity<Token> tokenEntity = securityClient.postGenerateToken(user);
+
+        // Registro il token per poterlo propagare alle call successive
+        customInterceptor.setToken(tokenEntity.getBody().getJwtToken());
+
+        // Aggiorno i documenti
         ResponseEntity<List<Document>> listEntity = documentClient.getDocuments();
+        for (Document document : listEntity.getBody()) {
+            log.info("Documento: {}", document.getName());
+            document.setName("New name - " + document.getName());
 
-        System.out.println(listEntity.getBody());
-
-
+            documentClient.putDocument(document);
+        }
     }
 }
