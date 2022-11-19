@@ -17,7 +17,7 @@ class ExceptionTest {
     BatchService batchService;
 
     @Test
-    void printServiceTest() {
+    void batchTestKo() {
         BatchException batchException = Assertions.assertThrows(BatchException.class, () -> batchService.run());
         Assertions.assertEquals(ResponseCode.PARAMETER_ERROR, batchException.getCode());
 

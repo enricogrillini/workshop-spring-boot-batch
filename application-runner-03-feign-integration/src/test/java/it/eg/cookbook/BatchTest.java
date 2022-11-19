@@ -6,8 +6,8 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-@SpringBootTest(classes = BatchApplication.class, args = {"--print", "--opt=opt-1", "required-1"})
-class PrintTest {
+@SpringBootTest(classes = BatchApplication.class, args = {"--endpoint=http://localhost:8082"})
+class BatchTest {
 
     @SpyBean
     BatchService batchService;
