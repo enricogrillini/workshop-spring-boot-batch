@@ -1,6 +1,7 @@
 package it.eg.cookbook;
 
-import it.eg.cookbook.service.RunService;
+import it.eg.cookbook.service.ExceptionService;
+import it.eg.cookbook.service.PrintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,7 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BatchApplication implements ApplicationRunner {
 
     @Autowired
-    RunService runService;
+    PrintService printService;
+
+    @Autowired
+    ExceptionService exceptionService;
 
     public static void main(String[] args) {
         SpringApplication.run(BatchApplication.class, args);
@@ -19,7 +23,8 @@ public class BatchApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        runService.run();
+        printService.run();
+        exceptionService.run();
     }
 
 }

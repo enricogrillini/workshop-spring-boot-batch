@@ -12,15 +12,17 @@ public class PrintService {
     @Autowired
     ApplicationArguments args;
 
-    public void printParameters() {
-        log.info("  EXECUTING : Run method of Application Runner");
+    public void run() {
+        if (args.containsOption("print")) {
+            log.info("  EXECUTING : Run method of Application Runner");
 
-        // Parametri non opzionali
-        log.info("    Non Optional Args");
-        args.getNonOptionArgs().forEach(nonOption -> log.info("      - {} ", nonOption));
+            // Parametri non opzionali
+            log.info("    Non Optional Args");
+            args.getNonOptionArgs().forEach(nonOption -> log.info("      - {} ", nonOption));
 
-        // Parametri opzionali
-        log.info("    Optional");
-        args.getOptionNames().forEach(option -> log.info("      - {}: {}", option, args.getOptionValues(option)));
+            // Parametri opzionali
+            log.info("    Optional");
+            args.getOptionNames().forEach(option -> log.info("      - {}: {}", option, args.getOptionValues(option)));
+        }
     }
 }

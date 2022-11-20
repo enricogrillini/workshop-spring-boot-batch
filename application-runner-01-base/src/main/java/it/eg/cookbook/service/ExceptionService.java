@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class RunService {
+public class ExceptionService {
 
     @Autowired
     ApplicationArguments applicationArguments;
@@ -16,10 +16,6 @@ public class RunService {
     PrintService batchService;
 
     public void run() {
-        if (applicationArguments.containsOption("print")) {
-            batchService.printParameters();
-        }
-
         if (applicationArguments.containsOption("exception")) {
             throw new RuntimeException("Test Exception");
         }
