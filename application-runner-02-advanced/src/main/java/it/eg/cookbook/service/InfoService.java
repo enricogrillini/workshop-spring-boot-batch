@@ -42,11 +42,18 @@ public class InfoService {
         }
     }
 
-    // Verifica i parametroi passati al batch
-    public void checkParameters() {
-        if (args.getOptionNames().isEmpty()) {
-            throw new BatchException("Specificare almeno un parametro", ResponseCode.PARAMETER_ERROR);
+    public boolean run() {
+        if (args.containsOption("help")) {
+            printHelp();
+            return false;
         }
+
+        if (args.containsOption("version")) {
+            printVersion();
+            return false;
+        }
+
+        return true;
     }
 
     // Stampa l'help
