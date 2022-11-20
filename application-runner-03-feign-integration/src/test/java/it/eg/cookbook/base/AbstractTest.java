@@ -1,4 +1,4 @@
-package it.eg.cookbook;
+package it.eg.cookbook.base;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,29 +36,7 @@ public abstract class AbstractTest {
     void setup(TestInfo testInfo) throws SQLException {
         this.testInfo = testInfo;
 
-//        // Operazioni da eseguire allo startup
-//        if (firstTest) {
-//            // Integration test
-//            if (isIntegrationTest()) {
-//                // Avvio il compose
-//                startCompose();
-//
-//                // Imposto il datasource
-//                dataSource = IT_DATA_SOURCE;
-//            }
-//
-//            if (isUnitTest()) {
-//                initDB();
-//            }
-
         objectMapper = ObjectMapperConfig.defaultObjectMapper();
-//            restTemplate = new RestTemplate();
-//            jdbcTemplate = new JdbcTemplate(dataSource);
-//
-//            firstTest = false;
-//        }
-//
-//        // Operazioni da eseguire ad ogni test
     }
 
     public boolean isIntegrationTest() {

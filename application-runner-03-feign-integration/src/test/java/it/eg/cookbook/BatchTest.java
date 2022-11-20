@@ -2,6 +2,7 @@ package it.eg.cookbook;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import it.eg.cookbook.base.AbstractTest;
 import it.eg.cookbook.client.DocumentClient;
 import it.eg.cookbook.client.SecurityClient;
 import it.eg.cookbook.gen.model.Document;
