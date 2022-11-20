@@ -25,17 +25,8 @@ public class BatchApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        if (args.containsOption("help")) {
-            infoService.printHelp();
-            return;
+        if (infoService.run()) {
+            batchService.run();
         }
-
-        if (args.containsOption("version")) {
-            infoService.printVersion();
-            return;
-        }
-
-        batchService.run();
     }
-
 }

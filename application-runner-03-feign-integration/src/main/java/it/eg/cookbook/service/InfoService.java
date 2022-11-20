@@ -42,6 +42,20 @@ public class InfoService {
         }
     }
 
+    public boolean run() {
+        if (args.containsOption("help")) {
+            printHelp();
+            return false;
+        }
+
+        if (args.containsOption("version")) {
+            printVersion();
+            return false;
+        }
+
+        return true;
+    }
+
     // Stampa l'help
     public void printHelp() {
         log.info(help());

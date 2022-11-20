@@ -12,15 +12,12 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 @SpringBootTest(classes = BatchApplication.class, args = {"--help"})
 class InfoHelpTest {
 
-    @Autowired
-    BatchService batchService;
-
     @SpyBean
     InfoService infoService;
 
     @Test
     void printServiceTest() {
-        batchService.run();
+        infoService.run();
 
         Mockito.verify(infoService, Mockito.times(1)).printHelp();
     }
