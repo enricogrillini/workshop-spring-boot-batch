@@ -6,10 +6,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class BatchApplication implements CommandLineRunner {
-
-    @Override
-    public void run(String... args) {
-    }
+public class BatchApplication {
 
 }

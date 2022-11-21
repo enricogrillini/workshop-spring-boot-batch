@@ -37,21 +37,25 @@ class BatchTest extends AbstractTest {
         // Token
         Token token = readMockFile(Token.class, "-POST-generate-token");
         Mockito
-                .when(securityClient.postGenerateToken(Mockito.any()))
-                .thenReturn(new ResponseEntity<>(token, HttpStatus.OK));
+                .doReturn(new ResponseEntity<>(token, HttpStatus.OK))
+                .when(securityClient)
+                .postGenerateToken(Mockito.any());
 
         // Lista documenti
         List<Document> documentList = objectMapper.readValue(readMockFile("-GET-document"), new TypeReference<List<Document>>() {
         });
         Mockito
-                .when(documentClient.getDocuments())
-                .thenReturn(new ResponseEntity<>(documentList, HttpStatus.OK));
+                .doReturn(new ResponseEntity<>(documentList, HttpStatus.OK))
+                .when(documentClient)
+                .getDocuments();
 
         // Aggironamento documenti
         ResponseMessage responseMessage = readMockFile(ResponseMessage.class, "-PUT-document");
         Mockito
-                .when(documentClient.putDocument(Mockito.any()))
-                .thenReturn(new ResponseEntity<>(responseMessage, HttpStatus.OK));
+                .doReturn(new ResponseEntity<>(responseMessage, HttpStatus.OK))
+                .when(documentClient)
+                .putDocument(Mockito.any());
+
 
         batchService.run();
 

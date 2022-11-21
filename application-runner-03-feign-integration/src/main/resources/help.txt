@@ -3,7 +3,10 @@
 Usage:  java -jar ./application-runner-advanced.jar [OPTIONS]
 
 Description:
-      Se specificato il parametro --print stampa le variabili passate al batch
+      Esegue la lettura di una lista di documenti e li aggiorna tramite l'utilizzo di ApiRest
+
+Required:
+      --endpoint           Endopoint
 
 Options:
       --help               Batch help

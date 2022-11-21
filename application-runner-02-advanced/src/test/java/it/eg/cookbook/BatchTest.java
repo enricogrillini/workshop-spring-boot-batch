@@ -11,8 +11,7 @@ class BatchTest {
 
     @SpyBean
     BatchService batchService;
-
-
+    
     @Test
     void printServiceTest() {
         batchService.run();
