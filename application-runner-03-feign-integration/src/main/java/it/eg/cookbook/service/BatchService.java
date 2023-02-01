@@ -52,7 +52,10 @@ public class BatchService {
         ResponseEntity<Token> tokenEntity = securityClient.postGenerateToken(user);
 
         // Registro il token per poterlo propagare alle call successive
-        customInterceptor.setToken(tokenEntity.getBody().getJwtToken());
+        Token token = tokenEntity.getBody();
+        if (token != null) {
+            customInterceptor.setToken(token.getJwtToken());
+        }
 
         // Aggiorno i documenti
         ResponseEntity<List<Document>> listEntity = documentClient.getDocuments();
