@@ -49,7 +49,7 @@ class BatchTest extends AbstractTest {
                 .when(documentClient)
                 .getDocuments();
 
-        // Aggironamento documenti
+        // Aggiornamento documenti
         ResponseMessage responseMessage = readMockFile(ResponseMessage.class, "-PUT-document");
         Mockito
                 .doReturn(new ResponseEntity<>(responseMessage, HttpStatus.OK))
@@ -60,10 +60,34 @@ class BatchTest extends AbstractTest {
         batchService.run();
 
         Mockito.verify(batchService, Mockito.times(1)).run();
-
         Mockito.verify(securityClient, Mockito.times(1)).postGenerateToken(Mockito.any());
         Mockito.verify(documentClient, Mockito.times(1)).getDocuments();
         Mockito.verify(documentClient, Mockito.times(3)).putDocument(Mockito.any());
+    }
+
+    @Test
+    void batchTest_KO() throws JsonProcessingException {
+        // Token
+        Token token = readMockFile(Token.class, "-POST-generate-token");
+        Mockito
+                .doReturn(new ResponseEntity<>(token, HttpStatus.OK))
+                .when(securityClient)
+                .postGenerateToken(Mockito.any());
+
+        // Lista documenti
+        List<Document> documentList = objectMapper.readValue(readMockFile("-GET-document"), new TypeReference<List<Document>>() {
+        });
+        Mockito
+                .doReturn(new ResponseEntity<>(documentList, HttpStatus.BAD_REQUEST))
+                .when(documentClient)
+                .getDocuments();
+
+        batchService.run();
+
+        Mockito.verify(batchService, Mockito.times(1)).run();
+        Mockito.verify(securityClient, Mockito.times(1)).postGenerateToken(Mockito.any());
+        Mockito.verify(documentClient, Mockito.times(1)).getDocuments();
+        Mockito.verify(documentClient, Mockito.times(0)).putDocument(Mockito.any());
     }
 
 }

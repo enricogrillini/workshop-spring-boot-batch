@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "New name - Contratto",
+    "description": "Contratto tra le parti per sottoscrizione conto corrente",
+    "data": "2022-11-19",
+    "updateBy": "writer-batch"
+  },
+  {
+    "id": 2,
+    "name": "New name - Recesso",
+    "description": "Norme per il recesso",
+    "data": "2022-11-19",
+    "updateBy": "writer-batch"
+  },
+  {
+    "id": 3,
+    "name": "New name - Appendice",
+    "description": "Appendice al contratto di sottoscrizione",
+    "data": "2022-11-19",
+    "updateBy": "writer-batch"
+  }
+]

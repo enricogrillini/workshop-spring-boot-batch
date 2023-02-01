@@ -11,6 +11,7 @@ import it.eg.cookbook.gen.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -59,11 +60,13 @@ public class BatchService {
 
         // Aggiorno i documenti
         ResponseEntity<List<Document>> listEntity = documentClient.getDocuments();
-        for (Document document : listEntity.getBody()) {
-            log.info("Documento: {}", document.getName());
-            document.setName("New name - " + document.getName());
+        if (listEntity.getStatusCode() == HttpStatus.OK) {
+            for (Document document : listEntity.getBody()) {
+                log.info("Documento: {}", document.getName());
+                document.setName("New name - " + document.getName());
 
-            documentClient.putDocument(document);
+                documentClient.putDocument(document);
+            }
         }
     }
 }
