@@ -11,4 +11,4 @@ Required:
 Options:
       --help               Batch help
       --version            Versione batch
-      --print              Stampa i parametri passati
+
