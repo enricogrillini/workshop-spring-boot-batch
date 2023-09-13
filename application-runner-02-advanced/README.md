@@ -12,8 +12,6 @@ java -jar ./target/application-runner-advanced.jar --help
 # Stampa versione
 java -jar ./target/application-runner-advanced.jar --version
 
-# Esecuzione: stampa variabili passate
-java -jar ./target/application-runner-advanced.jar --print
 ```
 
 Utilizzo con spring-boot:run:
@@ -25,8 +23,6 @@ mvn clean spring-boot:run "-Dspring-boot.run.arguments=--help"
 # Stampa versione
 mvn clean spring-boot:run "-Dspring-boot.run.arguments=--version"
 
-# Esecuzione: stampa variabili passate
-mvn clean spring-boot:run "-Dspring-boot.run.arguments=--print"
 ```
 
 Docker Windows
