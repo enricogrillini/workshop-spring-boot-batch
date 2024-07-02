@@ -14,7 +14,7 @@ class InfoHelpTest {
     InfoService infoService;
 
     @Test
-    void printServiceTest() {
+    void infoService_Help() {
         infoService.run();
 
         Mockito.verify(infoService, Mockito.times(1)).printHelp();

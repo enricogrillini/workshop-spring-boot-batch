@@ -13,7 +13,7 @@ class BatchTest {
     BatchService batchService;
     
     @Test
-    void printServiceTest() {
+    void batchTest() {
         batchService.run();
 
         Mockito.verify(batchService, Mockito.times(1)).run();

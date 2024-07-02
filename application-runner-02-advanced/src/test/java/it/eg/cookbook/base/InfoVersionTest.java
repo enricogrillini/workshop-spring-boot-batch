@@ -14,7 +14,7 @@ class InfoVersionTest {
     InfoService infoService;
 
     @Test
-    void printServiceTest() {
+    void infoService_Version() {
         infoService.run();
 
         Mockito.verify(infoService, Mockito.times(1)).printVersion();
