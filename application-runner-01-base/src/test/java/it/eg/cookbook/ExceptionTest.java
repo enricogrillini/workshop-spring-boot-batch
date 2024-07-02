@@ -14,7 +14,7 @@ class ExceptionTest {
     ExceptionService exceptionService;
 
     @Test
-    void printServiceTest() {
+    void batchTest_KO() {
         Assertions.assertThrows(RuntimeException.class, () -> exceptionService.run());
         Mockito.verify(exceptionService, Mockito.times(1)).run();
     }

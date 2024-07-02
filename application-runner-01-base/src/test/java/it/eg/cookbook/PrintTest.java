@@ -13,7 +13,7 @@ class PrintTest {
     PrintService printService;
 
     @Test
-    void printServiceTest() {
+    void printService() {
         printService.run();
 
         Mockito.verify(printService, Mockito.times(1)).run();
