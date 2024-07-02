@@ -9,6 +9,7 @@ import it.eg.cookbook.gen.model.Document;
 import it.eg.cookbook.gen.model.ResponseMessage;
 import it.eg.cookbook.gen.model.Token;
 import it.eg.cookbook.service.BatchService;
+import it.eg.cookbook.util.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest(classes = BatchApplication.class, args = {"--endpoint=http://localhost:8082"})
@@ -25,37 +27,29 @@ class BatchTest extends AbstractTest {
     @SpyBean
     BatchService batchService;
 
-    @MockBean
-    SecurityClient securityClient;
-
-    @MockBean
-    DocumentClient documentClient;
-
     @Test
     void batchTest() throws JsonProcessingException {
 
         // Token
-        Token token = readMockFile(Token.class, "-POST-generate-token");
+        Token token = TestUtil.readObject("mock/POST-generate-token.json", Token.class);
         Mockito
                 .doReturn(new ResponseEntity<>(token, HttpStatus.OK))
                 .when(securityClient)
                 .postGenerateToken(Mockito.any());
 
         // Lista documenti
-        List<Document> documentList = objectMapper.readValue(readMockFile("-GET-document"), new TypeReference<List<Document>>() {
-        });
+        Document[] documentArray = TestUtil.readObject("mock/GET-document.json", Document[].class);
         Mockito
-                .doReturn(new ResponseEntity<>(documentList, HttpStatus.OK))
+                .doReturn(new ResponseEntity<>(Arrays.asList(documentArray), HttpStatus.OK))
                 .when(documentClient)
                 .getDocuments();
 
         // Aggiornamento documenti
-        ResponseMessage responseMessage = readMockFile(ResponseMessage.class, "-PUT-document");
+        ResponseMessage responseMessage = TestUtil.readObject("mock/PUT-document.json", ResponseMessage.class);
         Mockito
                 .doReturn(new ResponseEntity<>(responseMessage, HttpStatus.OK))
                 .when(documentClient)
                 .putDocument(Mockito.any());
-
 
         batchService.run();
 
@@ -68,17 +62,16 @@ class BatchTest extends AbstractTest {
     @Test
     void batchTest_KO() throws JsonProcessingException {
         // Token
-        Token token = readMockFile(Token.class, "-POST-generate-token");
+        Token token = TestUtil.readObject("mock/POST-generate-token.json", Token.class);
         Mockito
                 .doReturn(new ResponseEntity<>(token, HttpStatus.OK))
                 .when(securityClient)
                 .postGenerateToken(Mockito.any());
 
         // Lista documenti
-        List<Document> documentList = objectMapper.readValue(readMockFile("-GET-document"), new TypeReference<List<Document>>() {
-        });
+        Document[] documentArray = TestUtil.readObject("mock/GET-document.json", Document[].class);
         Mockito
-                .doReturn(new ResponseEntity<>(documentList, HttpStatus.BAD_REQUEST))
+                .doReturn(new ResponseEntity<>(Arrays.asList(documentArray), HttpStatus.BAD_REQUEST))
                 .when(documentClient)
                 .getDocuments();
 

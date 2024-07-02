@@ -8,13 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 @SpringBootTest(classes = BatchApplication.class, args = {"--version"})
-class InfoVersionTest {
+class InfoVersionTest extends AbstractTest{
 
     @SpyBean
     InfoService infoService;
 
     @Test
-    void printServiceTest() {
+    void infoService_Version() {
         infoService.run();
 
         Mockito.verify(infoService, Mockito.times(1)).printVersion();
